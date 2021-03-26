@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  font-family: 'Khula', sans-serif;
+  background-color: #fff5e2;
+}
+
+/* mix */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fdbb40;
+  font-size: 80%;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 15px 0;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+  background-color: #fd7f40;
+  outline: none;
+  color: #f9f9f9;
+}
+
+/* layout */
+.container {
+  width: 50%;
+  min-width: 780px;
+  height: 90vh;
+  margin: 7vh auto 3vh auto;
+  background-color: white;
+}
+
+header {
+  padding-top: 0;
+}
+main,
+footer {
+  padding: 0 56px;
+}
+
+/* header */
+header {
+  position: relative;
+  height: 100px;
+  background-color: #fdbb40;
+}
+
+header h1 {
+  margin-top: 32px;
+  font-size: 230%;
+}
+
+header:after {
+  position: absolute;
+  top: -50%;
+  left: 80%;
+  content: '';
+  width: 256px;
+  height: 256px;
+  background-image: url(../img/burger-top.png);
+  background-repeat: no-repeat;
+}
+
+/* main */
+main {
+  /* height: calc(100% - 240px); */
+}
+
+.main-title {
+  margin-bottom: 16px;
+  font-size: 150%;
+  font-weight: normal;
+}
+
+.name-burger {
+  margin: 20px 0;
+  font-size: 0.8rem;
+}
+
+.name-burger input {
+  border: none;
+  font-size: 170%;
+}
+
+.name-burger input:focus,
+.name-burger input:active {
+  border: none;
+  outline: none;
+  background-color: #fff5e2;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ingredient {
+  width: 50%;
+  height: 56px;
+  margin-bottom: 16px;
+  line-height: 56px;
+}
+
+.ingredient-image {
+  height: 56px;
+  margin-right: 16px;
+  vertical-align: middle;
+}
+
+.ingredient label {
+  vertical-align: middle;
+}
+
+.ingredient .checkbox {
+  display: inline-block;
+  width: 150px;
+  height: 56px;
+  vertical-align: middle;
+  line-height: 56px;
+}
+
+.ingredient .checkbox span {
+  position: relative;
+  padding-left: 30px;
+  color: #f9395e;
+}
+
+.ingredient .checkbox input[type='checkbox'] {
+  visibility: hidden;
+}
+
+.ingredient .checkbox span:before {
+  font-family: 'Font Awesome 5 Free';
+}
+
+.ingredient .checkbox span:after {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-60%);
+  width: 16px;
+  height: 16px;
+  background-color: #d33359;
+}
+
+.ingredient input[type='checkbox']:checked + span:before {
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-55%);
+  z-index: 1;
+  content: '\f00c';
+  font-size: 20px;
+  font-weight: 900;
+  color: black;
+}
+
+.discount {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.discount input {
+  width: 70%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fff5e2;
+}
+.discount p {
+  margin-top: 8px;
+}
+
+.discount input:focus,
+.discount input:active {
+  border: none;
+  outline: none;
+  background-color: #fdbb40;
+}
+
+/* footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  color: #ffffff;
+  background-color: #d33359;
+}
+
+.price-container {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+/* classi aggiunte da js */
+
+.red-txt {
+  color: red;
+}
+.green-txt {
+  color: green;
+}
