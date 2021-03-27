@@ -34,16 +34,16 @@ body {
 .container {
   width: 50%;
   min-width: 780px;
-  height: 90vh;
   margin: 7vh auto 3vh auto;
   background-color: white;
+  margin-bottom: 10px;
 }
 
 header {
   padding-top: 0;
 }
 main,
-footer {
+section {
   padding: 0 56px;
 }
 
@@ -55,7 +55,9 @@ header {
 }
 
 header h1 {
-  margin-top: 32px;
+  position: absolute;
+  top: 5%;
+  left: 1%;
   font-size: 230%;
 }
 
@@ -70,25 +72,26 @@ header:after {
   background-repeat: no-repeat;
 }
 
-/* main */
-main {
-  /* height: calc(100% - 240px); */
+.wrapperOfAll {
+  padding-bottom: 15px;
 }
 
-.main-title {
-  margin-bottom: 16px;
-  font-size: 150%;
-  font-weight: normal;
+.name-burger,
+.name-burger input {
+  width: 80%;
 }
 
 .name-burger {
-  margin: 20px 0;
+  position: absolute;
+  bottom: 5%;
+  left: 1%;
   font-size: 0.8rem;
 }
 
 .name-burger input {
   border: none;
   font-size: 170%;
+  background-color: transparent;
 }
 
 .name-burger input:focus,
@@ -96,6 +99,18 @@ main {
   border: none;
   outline: none;
   background-color: #fff5e2;
+  background-color: transparent;
+}
+
+/* main */
+main {
+  padding-top: 0.5%;
+}
+
+.main-title {
+  margin-bottom: 16px;
+  font-size: 150%;
+  font-weight: normal;
 }
 
 .ingredients {
@@ -202,8 +217,8 @@ input[type='text']:focus {
   background-color: #fdbb40;
 }
 
-/* footer */
-footer {
+/* section */
+section {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -229,6 +244,21 @@ footer {
   font-size: 1rem;
 }
 
+/* btn pay */
+
+.fa-amazon-pay {
+  margin: 13px 0 0 56px;
+  font-size: 4rem;
+  padding: 2px 50px;
+  background-color: #fdbb40;
+  color: #000;
+  border-radius: 7px;
+}
+.fa-amazon-pay:hover {
+  background-color: #fd7f40;
+  color: #fff;
+}
+
 /* classi di riutilizzo */
 .pointer {
   cursor: pointer;
@@ -246,4 +276,45 @@ footer {
 }
 .green-txt {
   color: green;
+}
+
+.fade-in {
+  animation: fade-in 1.5s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.02);
+  }
+  40% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -1,3 +1,9 @@
+// REFERENZA AVVOLGITORE ELEMENTI
+var wrapperOfAll = document.getElementsByClassName(`wrapperOfAll`)[0];
+// REFERENZE NOME AL BURGER
+var nameBurgerBox = document.getElementsByClassName(`name-burger`)[0];
+var nameBurger = document.getElementById(`name`);
+var reportedName = document.getElementById(`reportedName`);
 // REFERENZE NODELIS
 var ingredientAdd = document.getElementsByClassName(`ingredient-add`);
 var ingredientImage = document.getElementsByClassName(`ingredient-image`);
@@ -40,12 +46,30 @@ var feedBackCouponNumber = document.getElementById(`feedBackCouponNumber`);
 var feed2Elem = document.getElementById(`feed2Elem`);
 var coupLengthInfo = document.getElementById(`coupLengthInfo`);
 var noInvioFeed = document.getElementById(`noInvioFeed`);
+// BTN PER PAGARE (SI vedrà in console il copuon rimosso dall'array (se corretto))
+var btnPay = document.getElementsByClassName(`fa-amazon-pay`)[0];
 
 // variabile globale del prezzo allo stato base
 priceNumber = 50;
+// coupon validi
+var validCoup = [`a123456789`, `b123456789`, `c123456789`, `d123456789`];
 
+// togliere animazione sul nome che chiama attenzione utente a metter focus
+nameBurger.addEventListener(`focus`, function () {
+  nameBurgerBox.classList.remove(`pulse`);
+});
+
+// dare un nome al burger e portare a display l'applicazione
+nameBurger.addEventListener(`keypress`, () => {
+  wrapperOfAll.classList.remove(`no-show`);
+  /* mettere un timeout per far si che il browser prima 
+  veda il carattere inserito e poi lo riporti */
+  setTimeout(function () {
+    reportedName.innerText = nameBurger.value;
+  }, 1);
+});
+// cheese // AGGIUNTA E RIMOZIONE INGREDIENTI CON I CLICK SULLE VARIE PARTI
 cheeseImg.addEventListener('click', cheeseFunc);
-
 function cheeseFunc() {
   if (cheese.checked) {
     cheese.checked = false;
@@ -127,7 +151,6 @@ function ketchupFunc() {
     price.innerHTML = priceNumber.toFixed(2);
   }
 }
-
 // testi ingredienti reattivi con prezzo
 cheeseTxt.addEventListener(`click`, () => cheeseFunc());
 tomatoTxt.addEventListener(`click`, () => tomatoFunc());
@@ -142,29 +165,41 @@ eggBox.addEventListener(`click`, () => eggFunc());
 lettuceBox.addEventListener(`click`, () => lettuceFunc());
 mustardBox.addEventListener(`click`, () => mustardFunc());
 ketchupBox.addEventListener(`click`, () => ketchupFunc());
+// **********
 
-// possibilità resettare il panino a 0 con btn
-
+// BTN RESET PANINO A 0
 btn.addEventListener(`click`, () => {
   for (let i = 0; i < ingredientCheckbox.length; i++) {
     ingredientCheckbox[i].checked = false;
-    priceNumber = 50;
+    //   prezzo di reset ingredienti con coupon valido
+    if (
+      feed2Elem.innerText ==
+      `CODICE CORRETTO: ti è stato applicato il 20% di sconto`
+    ) {
+      priceNumber = 50 * 0.8;
+    } else {
+      //   prezzo di reset ingredienti senza coupon valido
+      priceNumber = 50;
+    }
     price.innerHTML = priceNumber.toFixed(2);
   }
 });
 
-// coupon validi
-var validCoup = [`a123456789`, `b123456789`, `c123456789`, `d123456789`];
-
-// validazione coupon
+// ZONA VALIDAZIONE COUPON
+// comportamento dei feednack quando c'è focus o blur su input coupon
 coupon.addEventListener(`focus`, () => {
-  feedBackCoupon.classList.add(`show`);
-  feedBackCouponNumber.innerText = 10;
+  if (feed2Elem.style.display != `block`) {
+    feedBackCoupon.classList.add(`show`);
+  }
 });
-coupon.addEventListener(`blur`, () => feedBackCoupon.classList.remove(`show`));
+// coupon.addEventListener(`blur`, () => feedBackCoupon.classList.remove(`show`));
 
+/* variabile del idice cupon dichiarata globalemente
+ per poter essere rimosso all'alla funzione quando btn paga*/
+var index;
+
+// verificare se l'input contiene un valido coupon
 coupon.addEventListener(`keydown`, () => {
-  // verificare se l'input contiene un valido coupon
   setTimeout(function () {
     if (validCoup.includes(coupon.value)) {
       // feedback sconto
@@ -173,17 +208,25 @@ coupon.addEventListener(`keydown`, () => {
       /*  via info lunhezza fissa coupon 
     (altrimenti testi si sovrapporebbero) */
       coupLengthInfo.style.display = `none`;
-      //   calcolo e inserimento sconto
-      sconto = priceNumber * 0.8;
-      price.innerHTML = sconto.toFixed(2);
+      // calcolo e inserimento sconto
+      if (parseInt(price.innerText) > 40) {
+        sconto = priceNumber * 0.8;
+        price.innerText = sconto.toFixed(2);
+      }
       // eliminazione fedback su numero cifre
-      feedBackCoupon.style.display = `none`;
-      // reset se coupon viene disinseito
+      feedBackCoupon.classList.remove(`show`);
+      /* storare indice couponInserito per poterlo
+      togliere dall'array al click di paga */
+      index = validCoup.indexOf(coupon.value);
     } else {
+      // reset se coupon viene disinseito
       feed2Elem.style.display = `none`;
       price.innerHTML = priceNumber.toFixed(2);
-      feedBackCoupon.style.display = `inline-block`;
+      feedBackCoupon.classList.add(`show`);
     }
+    /* il timeout (1 qui sotto) serve affinchè il browser 
+    aspetti che il carattere sia stato inserito prima di 
+    leggere la stringa dentro l'input per i coupon */
   }, 1);
 });
 // dare feedback su numero di caratteri mancanti
@@ -193,7 +236,14 @@ coupon.addEventListener(`keydown`, () => {
   var num = parseInt(document.getElementById(`feedBackCouponNumber`).innerText);
   if (event.keyCode == 8 && num < 10) {
     feedBackCouponNumber.innerText = ++num;
-  } else if (event.keyCode != 8) {
+    /* se preme caratteri diversi da: canella,
+     freccia a dx o freccia a sx o invio */
+  } else if (
+    event.keyCode != 8 &&
+    event.keyCode != 37 &&
+    event.keyCode != 39 &&
+    event.keyCode != 13
+  ) {
     feedBackCouponNumber.innerText = --num;
   }
 });
@@ -201,7 +251,29 @@ coupon.addEventListener(`keydown`, () => {
 coupon.addEventListener(`keypress`, () => {
   if (event.keyCode == 13) {
     noInvioFeed.classList.add(`show`);
+    /* se utente preme invio dopo coupon coretto o preme invio e poi non digita 
+    -> 5secondi per leggere poi via messaggio */
+    setTimeout(function () {
+      noInvioFeed.classList.remove(`show`);
+    }, 5000);
+    // quando preme qualsiasi altra cosa via messaggio
   } else {
     noInvioFeed.classList.remove(`show`);
   }
+});
+
+// togliere dall'array il copon se si schiaccia paga
+btnPay.addEventListener(`click`, () => {
+  console.log(index);
+  console.log(`coupon validi prima del pagamento`);
+  console.table(validCoup);
+  //   operazione vera e propria
+  //   validCoup.splice(index, 1);
+  delete validCoup[index];
+  //   ******************
+  console.log(`coupon validi dopo il pagamento`);
+  console.table(validCoup);
+  console.log(
+    `come si vede dal confronto delle due table se si è usato un copon questo è stato rimosso dalla lista dei copon validi per lo sconto, altrimenti le tablle restano uguali`
+  );
 });

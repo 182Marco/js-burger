@@ -25,185 +25,190 @@
         <!-- logo -->
         <div class="logo"></div>
         <h1>Create Your Burger</h1>
-      </header>
-
-      <!-- MAIN -->
-      <main>
         <!-- Nome -->
-        <div class="name-burger">
+        <div class="name-burger pulse">
           <input
             type="text"
             id="name"
             name="name"
-            placeholder="Name Your Burger"
+            placeholder="first things first: write in here your Burger's name "
           />
         </div>
+      </header>
+      <!-- avvolgere tutti gli elementi in display non se non si da un  nome al panino -->
+      <div class="wrapperOfAll no-show fade-in">
+        <!-- MAIN -->
+        <main>
+          <!-- Ingredienti -->
+          <h2 class="main-title">Ingredients :</h2>
+          <div class="ingredients">
+            <!-- chesse -->
+            <div class="ingredient">
+              <img
+                class="ingredient-image pointer"
+                id="cheeseImg"
+                src="img/cheese.svg"
+                alt="Cheese"
+              />
+              <label class="pointer">Cheese</label>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  class="ingredient-checkbox pointer"
+                  id="cheese"
+                  value="5"
+                />
+                <span class="ingredient-add pointer">add</span>
+              </div>
+            </div>
+            <!-- tomato -->
+            <div class="ingredient">
+              <img
+                class="ingredient-image pointer"
+                id="tomatoImg"
+                src="img/tomato.svg"
+                alt="Tomato"
+              />
+              <label class="pointer">Tomato</label>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  class="ingredient-checkbox pointer"
+                  id="tomato"
+                  value="2"
+                />
+                <span class="ingredient-add pointer">add</span>
+              </div>
+            </div>
+            <!-- egg -->
+            <div class="ingredient">
+              <img
+                class="ingredient-image pointer"
+                id="eggImg"
+                src="img/fried-egg.svg"
+                alt="Egg"
+              />
+              <label class="pointer">Egg</label>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  class="ingredient-checkbox pointer"
+                  id="egg"
+                  value="3"
+                />
+                <span class="ingredient-add pointer">add</span>
+              </div>
+            </div>
+            <!-- lettuce -->
+            <div class="ingredient">
+              <img
+                class="ingredient-image pointer"
+                id="lettuceImg"
+                src="img/lettuce.svg"
+                alt="Lettuce"
+              />
+              <label class="pointer">Lettuce</label>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  class="ingredient-checkbox pointer"
+                  id="lettuce"
+                  value="4"
+                />
+                <span class="ingredient-add pointer">add</span>
+              </div>
+            </div>
+            <!-- mustard -->
+            <div class="ingredient">
+              <img
+                class="ingredient-image pointer"
+                id="mustardImg"
+                src="img/mustard.svg"
+                alt="Mustard"
+              />
+              <label class="pointer">Mustard</label>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  class="ingredient-checkbox pointer"
+                  id="mustard"
+                  value="6"
+                />
+                <span class="ingredient-add pointer">add</span>
+              </div>
+            </div>
+            <!-- ketchup -->
+            <div class="ingredient">
+              <img
+                class="ingredient-image pointer"
+                id="ketchupImg"
+                src="img/ketchup.svg"
+                alt="Ketchup"
+              />
+              <label class="pointer">Ketchup</label>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  class="ingredient-checkbox pointer"
+                  id="ketchup"
+                  value="1"
+                />
+                <span class="ingredient-add pointer">add</span>
+              </div>
+            </div>
+            <!-- Bottone azzera ingredienti -->
+            <div class="submit">
+              <button id="btn" class="btn pointer">
+                reset to basic hamburger
+              </button>
+            </div>
+          </div>
 
-        <!-- Ingredienti -->
-        <h2 class="main-title">Ingredients</h2>
-        <div class="ingredients">
-          <!-- chesse -->
-          <div class="ingredient">
-            <img
-              class="ingredient-image pointer"
-              id="cheeseImg"
-              src="img/cheese.svg"
-              alt="Cheese"
-            />
-            <label class="pointer">Cheese</label>
-            <div class="checkbox">
-              <input
-                type="checkbox"
-                class="ingredient-checkbox pointer"
-                id="cheese"
-                value="5"
-              />
-              <span class="ingredient-add pointer">add</span>
-            </div>
-          </div>
-          <!-- tomato -->
-          <div class="ingredient">
-            <img
-              class="ingredient-image pointer"
-              id="tomatoImg"
-              src="img/tomato.svg"
-              alt="Tomato"
-            />
-            <label class="pointer">Tomato</label>
-            <div class="checkbox">
-              <input
-                type="checkbox"
-                class="ingredient-checkbox pointer"
-                id="tomato"
-                value="2"
-              />
-              <span class="ingredient-add pointer">add</span>
-            </div>
-          </div>
-          <!-- egg -->
-          <div class="ingredient">
-            <img
-              class="ingredient-image pointer"
-              id="eggImg"
-              src="img/fried-egg.svg"
-              alt="Egg"
-            />
-            <label class="pointer">Egg</label>
-            <div class="checkbox">
-              <input
-                type="checkbox"
-                class="ingredient-checkbox pointer"
-                id="egg"
-                value="3"
-              />
-              <span class="ingredient-add pointer">add</span>
-            </div>
-          </div>
-          <!-- lettuce -->
-          <div class="ingredient">
-            <img
-              class="ingredient-image pointer"
-              id="lettuceImg"
-              src="img/lettuce.svg"
-              alt="Lettuce"
-            />
-            <label class="pointer">Lettuce</label>
-            <div class="checkbox">
-              <input
-                type="checkbox"
-                class="ingredient-checkbox pointer"
-                id="lettuce"
-                value="4"
-              />
-              <span class="ingredient-add pointer">add</span>
-            </div>
-          </div>
-          <!-- mustard -->
-          <div class="ingredient">
-            <img
-              class="ingredient-image pointer"
-              id="mustardImg"
-              src="img/mustard.svg"
-              alt="Mustard"
-            />
-            <label class="pointer">Mustard</label>
-            <div class="checkbox">
-              <input
-                type="checkbox"
-                class="ingredient-checkbox pointer"
-                id="mustard"
-                value="6"
-              />
-              <span class="ingredient-add pointer">add</span>
-            </div>
-          </div>
-          <!-- ketchup -->
-          <div class="ingredient">
-            <img
-              class="ingredient-image pointer"
-              id="ketchupImg"
-              src="img/ketchup.svg"
-              alt="Ketchup"
-            />
-            <label class="pointer">Ketchup</label>
-            <div class="checkbox">
-              <input
-                type="checkbox"
-                class="ingredient-checkbox pointer"
-                id="ketchup"
-                value="1"
-              />
-              <span class="ingredient-add pointer">add</span>
-            </div>
-          </div>
-          <!-- Bottone azzera ingredienti -->
-          <div class="submit">
-            <button id="btn" class="btn pointer">
-              reset to basic hamburger
-            </button>
-          </div>
-        </div>
-
-        <!-- Sconto -->
-        <div class="discount">
-          <!-- etichette e eventuale feed non premere 
+          <!-- Sconto -->
+          <div class="discount">
+            <!-- etichette e eventuale feed non premere 
                 invio se utente lo preme dentro input -->
-          <div>
-            <label for="coupon">Discount Coupon</label>
-            <span id="noInvioFeed" class="no-show red-txt">
-              Non premere invio, appena digiterai l'ultimo carattere di un
-              coupon valido il prezzo scalerà</span
-            >
-          </div>
-          <input
-            type="text"
-            name="coupon"
-            id="coupon"
-            placeholder="12354ABCDEF"
-            size="2"
-          />
-          <div id="feedBackMessageCont">
             <div>
-              <p id="feedBackCoupon" class="red-txt no-show">
-                Mancano
-                <span id="feedBackCouponNumber" class="red-txt"> 10 </span>
-                caratteri
-              </p>
+              <label for="coupon">Discount Coupon</label>
+              <span id="noInvioFeed" class="no-show red-txt">
+                Non premere invio, appena digiterai l'ultimo carattere di un
+                coupon valido il prezzo scalerà</span
+              >
             </div>
-            <p id="coupLengthInfo">(tutti i coupon hanno 10 caratteri)</p>
+            <input
+              type="text"
+              name="coupon"
+              id="coupon"
+              placeholder="1235456789a"
+            />
+            <div id="feedBackMessageCont">
+              <div>
+                <p id="feedBackCoupon" class="red-txt no-show">
+                  Caratteri mancanti:
+                  <span id="feedBackCouponNumber" class="red-txt"> 10 </span>
+                </p>
+              </div>
+              <p id="coupLengthInfo">(tutti i coupon hanno 10 caratteri)</p>
+            </div>
+            <div class="invio-Err-Cont">
+              <p id="feed2Elem" class="green-txt"></p>
+            </div>
           </div>
-          <div class="invio-Err-Cont">
-            <p id="feed2Elem" class="green-txt"></p>
-          </div>
-        </div>
-      </main>
+        </main>
 
-      <!-- FOOTER -->
-      <footer>
-        <h2>Your Price</h2>
-        <div class="price-container">$ <span id="price">50.00</span></div>
-      </footer>
-      <script src="main.js"></script>
+        <!-- section price -->
+        <section>
+          <h2>Your Price</h2>
+          <div class="price-container">
+            <span id="reportedName"></span>
+            <span>$</span>
+            <span id="price">50.00</span>
+          </div>
+        </section>
+        <!-- btn pay -->
+        <i class="fab fa-amazon-pay"></i>
+        <script src="main.js"></script>
+      </div>
     </div>
   </body>
 </html>
