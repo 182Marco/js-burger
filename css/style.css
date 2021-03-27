@@ -173,7 +173,6 @@ main {
 }
 
 .discount input {
-  width: 70%;
   padding: 8px;
   border: none;
   border-radius: 8px;
@@ -195,7 +194,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 70px;
   color: #ffffff;
   background-color: #d33359;
 }
@@ -204,7 +203,30 @@ footer {
   font-size: 200%;
   font-weight: bold;
 }
+#feedBackMessageCont {
+  display: flex;
+  justify-content: space-between;
+}
 
+.invio-Err-Cont {
+  border: 1px solid blue;
+  height: 22px;
+}
+#invioPressErrElem {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+/* classi di riutilizzo */
+.pointer {
+  cursor: pointer;
+}
+.no-show {
+  display: none;
+}
+.show {
+  display: inline-block;
+}
 /* classi aggiunte da js */
 
 .red-txt {

@@ -33,6 +33,11 @@ var mustardBox = document.getElementsByTagName(`span`)[4];
 var ketchupBox = document.getElementsByTagName(`span`)[5];
 // REFERENZE BTN RESET TO 0
 var btn = document.getElementById(`btn`);
+// REFERENZE INPUT COUPON
+var coupon = document.getElementById(`coupon`);
+var FeedBackCoupon = document.getElementById(`FeedBackCoupon`);
+var FeedBackCouponNumber = document.getElementById(`FeedBackCouponNumber`);
+var invioPressErrElem = document.getElementById(`invioPressErrElem`);
 
 // variabile globale del prezzo allo stato base
 priceNumber = 50;
@@ -155,5 +160,34 @@ btn.addEventListener(`click`, () => {
     ingredientCheckbox[i].checked = false;
     priceNumber = 50;
     price.innerHTML = priceNumber.toFixed(2);
+  }
+});
+
+// validazione coupon
+coupon.addEventListener(`focus`, () => {
+  FeedBackCoupon.classList.add(`show`);
+  FeedBackCouponNumber.innerText = 10;
+});
+coupon.addEventListener(`blur`, () => FeedBackCoupon.classList.remove(`show`));
+
+coupon.addEventListener(`keydown`, () => {
+  var num = parseInt(document.getElementById(`FeedBackCouponNumber`).innerText);
+  console.log(num);
+  if (num < 1) {
+    FeedBackCoupon.style.display = 'none';
+    invioPressErrElem.classList.remove(`no-show`);
+    invioPressErrElem.innerText = `Hai inserito troppe cifre`;
+  } else {
+    FeedBackCoupon.style.display = 'block';
+  }
+  if (event.keyCode == 13) {
+    invioPressErrElem.classList.remove(`no-show`);
+    invioPressErrElem.innerText = `Non premere invio, lo sconto si attiverà appena digiterai l'ulima cifra del codice corretto`;
+  } else if (event.keyCode == 8 && num < 10) {
+    FeedBackCouponNumber.innerText = num + 1;
+    invioPressErrElem.classList.add(`no-show`);
+  } else if (event.keyCode != 8) {
+    FeedBackCouponNumber.innerText = num - 1;
+    invioPressErrElem.classList.add(`no-show`);
   }
 });

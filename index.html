@@ -45,120 +45,122 @@
           <!-- chesse -->
           <div class="ingredient">
             <img
-              class="ingredient-image"
+              class="ingredient-image pointer"
               id="cheeseImg"
               src="img/cheese.svg"
               alt="Cheese"
             />
-            <label>Cheese</label>
+            <label class="pointer">Cheese</label>
             <div class="checkbox">
               <input
                 type="checkbox"
-                class="ingredient-checkbox"
+                class="ingredient-checkbox pointer"
                 id="cheese"
                 value="5"
               />
-              <span class="ingredient-add">add</span>
+              <span class="ingredient-add pointer">add</span>
             </div>
           </div>
           <!-- tomato -->
           <div class="ingredient">
             <img
-              class="ingredient-image"
+              class="ingredient-image pointer"
               id="tomatoImg"
               src="img/tomato.svg"
               alt="Tomato"
             />
-            <label>Tomato</label>
+            <label class="pointer">Tomato</label>
             <div class="checkbox">
               <input
                 type="checkbox"
-                class="ingredient-checkbox"
+                class="ingredient-checkbox pointer"
                 id="tomato"
                 value="2"
               />
-              <span class="ingredient-add">add</span>
+              <span class="ingredient-add pointer">add</span>
             </div>
           </div>
           <!-- egg -->
           <div class="ingredient">
             <img
-              class="ingredient-image"
+              class="ingredient-image pointer"
               id="eggImg"
               src="img/fried-egg.svg"
               alt="Egg"
             />
-            <label>Egg</label>
+            <label class="pointer">Egg</label>
             <div class="checkbox">
               <input
                 type="checkbox"
-                class="ingredient-checkbox"
+                class="ingredient-checkbox pointer"
                 id="egg"
                 value="3"
               />
-              <span class="ingredient-add">add</span>
+              <span class="ingredient-add pointer">add</span>
             </div>
           </div>
           <!-- lettuce -->
           <div class="ingredient">
             <img
-              class="ingredient-image"
+              class="ingredient-image pointer"
               id="lettuceImg"
               src="img/lettuce.svg"
               alt="Lettuce"
             />
-            <label>Lettuce</label>
+            <label class="pointer">Lettuce</label>
             <div class="checkbox">
               <input
                 type="checkbox"
-                class="ingredient-checkbox"
+                class="ingredient-checkbox pointer"
                 id="lettuce"
                 value="4"
               />
-              <span class="ingredient-add">add</span>
+              <span class="ingredient-add pointer">add</span>
             </div>
           </div>
           <!-- mustard -->
           <div class="ingredient">
             <img
-              class="ingredient-image"
+              class="ingredient-image pointer"
               id="mustardImg"
               src="img/mustard.svg"
               alt="Mustard"
             />
-            <label>Mustard</label>
+            <label class="pointer">Mustard</label>
             <div class="checkbox">
               <input
                 type="checkbox"
-                class="ingredient-checkbox"
+                class="ingredient-checkbox pointer"
                 id="mustard"
                 value="6"
               />
-              <span class="ingredient-add">add</span>
+              <span class="ingredient-add pointer">add</span>
             </div>
           </div>
           <!-- ketchup -->
           <div class="ingredient">
             <img
-              class="ingredient-image"
+              class="ingredient-image pointer"
               id="ketchupImg"
               src="img/ketchup.svg"
               alt="Ketchup"
             />
-            <label>Ketchup</label>
+            <label class="pointer">Ketchup</label>
             <div class="checkbox">
               <input
                 type="checkbox"
-                class="ingredient-checkbox"
+                class="ingredient-checkbox pointer"
                 id="ketchup"
                 value="1"
               />
-              <span class="ingredient-add">add</span>
+              <span class="ingredient-add pointer">add</span>
             </div>
           </div>
           <!-- Bottone azzera ingredienti -->
           <div class="submit">
-            <button id="btn" class="btn">reset to basic hamburger</button>
+            <button id="btn" class="btn pointer">
+              reset to basic hamburger
+            </button>
           </div>
         </div>
 
@@ -170,8 +172,21 @@
             name="coupon"
             id="coupon"
             placeholder="12354ABCDEF"
+            size="2"
           />
-          <p id="FeedBackOnCoupon">ciao belli</p>
+          <div id="feedBackMessageCont">
+            <div>
+              <p id="FeedBackCoupon" class="red-txt no-show">
+                Mancano
+                <span id="FeedBackCouponNumber" class="red-txt"> 10 </span>
+                caratteri
+              </p>
+            </div>
+            <p>(tutti i coupon hanno 10 caratteri)</p>
+          </div>
+          <div class="invio-Err-Cont">
+            <p id="invioPressErrElem" class="red-txt"></p>
+          </div>
         </div>
       </main>
 
