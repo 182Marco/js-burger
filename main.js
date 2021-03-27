@@ -54,13 +54,13 @@ priceNumber = 50;
 // coupon validi
 var validCoup = [`a123456789`, `b123456789`, `c123456789`, `d123456789`];
 
-// togliere animazione sul nome che chiama attenzione utente a metter focus
-nameBurger.addEventListener(`focus`, function () {
-  nameBurgerBox.classList.remove(`pulse`);
-});
+// agevolare utente -> da subito focus nell'input
+nameBurger.focus();
 
 // dare un nome al burger e portare a display l'applicazione
-nameBurger.addEventListener(`keypress`, () => {
+nameBurger.addEventListener(`keydown`, () => {
+  // via pulse che attirava attenzione utente su input nome
+  nameBurgerBox.classList.remove(`pulse`);
   wrapperOfAll.classList.remove(`no-show`);
   /* mettere un timeout per far si che il browser prima 
   veda il carattere inserito e poi lo riporti */
@@ -236,7 +236,7 @@ coupon.addEventListener(`keydown`, () => {
   var num = parseInt(document.getElementById(`feedBackCouponNumber`).innerText);
   if (event.keyCode == 8 && num < 10) {
     feedBackCouponNumber.innerText = ++num;
-    /* se preme caratteri diversi da: canella,
+    /* se preme caratteri diversi da: cancella,
      freccia a dx o freccia a sx o invio */
   } else if (
     event.keyCode != 8 &&
@@ -264,14 +264,14 @@ coupon.addEventListener(`keypress`, () => {
 
 // togliere dall'array il copon se si schiaccia paga
 btnPay.addEventListener(`click`, () => {
-  console.log(index);
-  console.log(`coupon validi prima del pagamento`);
+  console.error(`l'indece che viene rimosso dal primo array è: "${index}"`);
+  console.warn(`coupon validi prima del pagamento`);
   console.table(validCoup);
   //   operazione vera e propria
   //   validCoup.splice(index, 1);
   delete validCoup[index];
   //   ******************
-  console.log(`coupon validi dopo il pagamento`);
+  console.warn(`coupon validi dopo il pagamento`);
   console.table(validCoup);
   console.log(
     `come si vede dal confronto delle due table se si è usato un copon questo è stato rimosso dalla lista dei copon validi per lo sconto, altrimenti le tablle restano uguali`
