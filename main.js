@@ -35,9 +35,11 @@ var ketchupBox = document.getElementsByTagName(`span`)[5];
 var btn = document.getElementById(`btn`);
 // REFERENZE INPUT COUPON
 var coupon = document.getElementById(`coupon`);
-var FeedBackCoupon = document.getElementById(`FeedBackCoupon`);
-var FeedBackCouponNumber = document.getElementById(`FeedBackCouponNumber`);
-var invioPressErrElem = document.getElementById(`invioPressErrElem`);
+var feedBackCoupon = document.getElementById(`feedBackCoupon`);
+var feedBackCouponNumber = document.getElementById(`feedBackCouponNumber`);
+var feed2Elem = document.getElementById(`feed2Elem`);
+var coupLengthInfo = document.getElementById(`coupLengthInfo`);
+var noInvioFeed = document.getElementById(`noInvioFeed`);
 
 // variabile globale del prezzo allo stato base
 priceNumber = 50;
@@ -156,41 +158,50 @@ var validCoup = [`a123456789`, `b123456789`, `c123456789`, `d123456789`];
 
 // validazione coupon
 coupon.addEventListener(`focus`, () => {
-  FeedBackCoupon.classList.add(`show`);
-  FeedBackCouponNumber.innerText = 10;
+  feedBackCoupon.classList.add(`show`);
+  feedBackCouponNumber.innerText = 10;
 });
-coupon.addEventListener(`blur`, () => FeedBackCoupon.classList.remove(`show`));
+coupon.addEventListener(`blur`, () => feedBackCoupon.classList.remove(`show`));
 
 coupon.addEventListener(`keydown`, () => {
   // verificare se l'input contiene un valido coupon
-  if (
-    coupon.value.includes('a123456789') ||
-    coupon.value.includes('b123456789') ||
-    coupon.value.includes('c123456789') ||
-    coupon.value.includes('d123456789')
-  ) {
-    invioPressErrElem.innerText = `CODICE CORRETTO: ti è stato applicato il 20% di sconto`;
-    sconto = priceNumber * 0.8;
-    scontoFixed = sconto.toFixed(2);
-    price.innerHTML = priceNumberFixed;
-  }
-  var num = parseInt(document.getElementById(`FeedBackCouponNumber`).innerText);
-  console.log(num);
-  if (num < 1) {
-    FeedBackCoupon.style.display = 'none';
-    invioPressErrElem.classList.remove(`no-show`);
-    invioPressErrElem.innerText = `Hai inserito troppe cifre`;
-  } else {
-    FeedBackCoupon.style.display = 'block';
-  }
-  if (event.keyCode == 13) {
-    invioPressErrElem.classList.remove(`no-show`);
-    invioPressErrElem.innerText = `Non premere invio, lo sconto si attiverà appena digiterai l'ulima cifra del codice corretto`;
-  } else if (event.keyCode == 8 && num < 10) {
-    FeedBackCouponNumber.innerText = num + 1;
-    invioPressErrElem.classList.add(`no-show`);
+  setTimeout(function () {
+    if (validCoup.includes(coupon.value)) {
+      // feedback sconto
+      feed2Elem.style.display = `block`;
+      feed2Elem.innerText = `CODICE CORRETTO: ti è stato applicato il 20% di sconto`;
+      /*  via info lunhezza fissa coupon 
+    (altrimenti testi si sovrapporebbero) */
+      coupLengthInfo.style.display = `none`;
+      //   calcolo e inserimento sconto
+      sconto = priceNumber * 0.8;
+      price.innerHTML = sconto.toFixed(2);
+      // eliminazione fedback su numero cifre
+      feedBackCoupon.style.display = `none`;
+      // reset se coupon viene disinseito
+    } else {
+      feed2Elem.style.display = `none`;
+      price.innerHTML = priceNumber.toFixed(2);
+      feedBackCoupon.style.display = `inline-block`;
+    }
+  }, 1);
+});
+// dare feedback su numero di caratteri mancanti
+coupon.addEventListener(`keydown`, () => {
+  /* definire ad ogni keypress il feedback
+    di caratteri mancanti precedente */
+  var num = parseInt(document.getElementById(`feedBackCouponNumber`).innerText);
+  if (event.keyCode == 8 && num < 10) {
+    feedBackCouponNumber.innerText = ++num;
   } else if (event.keyCode != 8) {
-    FeedBackCouponNumber.innerText = num - 1;
-    invioPressErrElem.classList.add(`no-show`);
+    feedBackCouponNumber.innerText = --num;
+  }
+});
+// dare feedback se nell'input copon si preme invio
+coupon.addEventListener(`keypress`, () => {
+  if (event.keyCode == 13) {
+    noInvioFeed.classList.add(`show`);
+  } else {
+    noInvioFeed.classList.remove(`show`);
   }
 });

@@ -166,7 +166,15 @@
 
         <!-- Sconto -->
         <div class="discount">
-          <label for="coupon">Discount Coupon</label>
+          <!-- etichette e eventuale feed non premere 
+                invio se utente lo preme dentro input -->
+          <div>
+            <label for="coupon">Discount Coupon</label>
+            <span id="noInvioFeed" class="no-show red-txt">
+              Non premere invio, appena digiterai l'ultimo carattere di un
+              coupon valido il prezzo scalerà</span
+            >
+          </div>
           <input
             type="text"
             name="coupon"
@@ -176,16 +184,16 @@
           />
           <div id="feedBackMessageCont">
             <div>
-              <p id="FeedBackCoupon" class="red-txt no-show">
+              <p id="feedBackCoupon" class="red-txt no-show">
                 Mancano
-                <span id="FeedBackCouponNumber" class="red-txt"> 10 </span>
+                <span id="feedBackCouponNumber" class="red-txt"> 10 </span>
                 caratteri
               </p>
             </div>
-            <p>(tutti i coupon hanno 10 caratteri)</p>
+            <p id="coupLengthInfo">(tutti i coupon hanno 10 caratteri)</p>
           </div>
           <div class="invio-Err-Cont">
-            <p id="invioPressErrElem" class="red-txt"></p>
+            <p id="feed2Elem" class="green-txt"></p>
           </div>
         </div>
       </main>

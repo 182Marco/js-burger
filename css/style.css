@@ -178,11 +178,24 @@ main {
   border-radius: 8px;
   background-color: #fff5e2;
 }
-.discount p {
-  margin-top: 8px;
+
+label[for='coupon'] {
+  display: inline-block;
+  margin-right: 15px;
 }
 
-.discount input:focus,
+#noInvioFeed {
+  font-size: 0.8rem;
+}
+
+#feedBackMessageCont {
+  height: 0;
+}
+
+input[type='text']:focus {
+  outline: none;
+}
+
 .discount input:active {
   border: none;
   outline: none;
@@ -209,7 +222,6 @@ footer {
 }
 
 .invio-Err-Cont {
-  border: 1px solid blue;
   height: 22px;
 }
 #invioPressErrElem {
