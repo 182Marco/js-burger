@@ -48,13 +48,11 @@ function cheeseFunc() {
   if (cheese.checked) {
     cheese.checked = false;
     priceNumber -= parseInt(cheese.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   } else {
     cheese.checked = true;
     priceNumber += parseInt(cheese.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   }
 }
 // tomato
@@ -64,13 +62,11 @@ function tomatoFunc() {
   if (tomato.checked) {
     tomato.checked = false;
     priceNumber -= parseInt(tomato.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   } else {
     tomato.checked = true;
     priceNumber += parseInt(tomato.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   }
 }
 // egg
@@ -80,13 +76,11 @@ function eggFunc() {
   if (egg.checked) {
     egg.checked = false;
     priceNumber -= parseInt(egg.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   } else {
     egg.checked = true;
     priceNumber += parseInt(egg.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   }
 }
 // lettuce
@@ -96,13 +90,11 @@ function lettuceFunc() {
   if (lettuce.checked) {
     lettuce.checked = false;
     priceNumber -= parseInt(lettuce.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   } else {
     lettuce.checked = true;
     priceNumber += parseInt(lettuce.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   }
 }
 // mustard
@@ -112,13 +104,11 @@ function mustardFunc() {
   if (mustard.checked) {
     mustard.checked = false;
     priceNumber -= parseInt(mustard.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   } else {
     mustard.checked = true;
     priceNumber += parseInt(mustard.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   }
 }
 //  Ketchup
@@ -128,13 +118,11 @@ function ketchupFunc() {
   if (ketchup.checked) {
     ketchup.checked = false;
     priceNumber -= parseInt(ketchup.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   } else {
     ketchup.checked = true;
     priceNumber += parseInt(ketchup.value);
-    priceNumberFixed = priceNumber.toFixed(2);
-    price.innerHTML = priceNumberFixed;
+    price.innerHTML = priceNumber.toFixed(2);
   }
 }
 
@@ -163,6 +151,9 @@ btn.addEventListener(`click`, () => {
   }
 });
 
+// coupon validi
+var validCoup = [`a123456789`, `b123456789`, `c123456789`, `d123456789`];
+
 // validazione coupon
 coupon.addEventListener(`focus`, () => {
   FeedBackCoupon.classList.add(`show`);
@@ -171,6 +162,18 @@ coupon.addEventListener(`focus`, () => {
 coupon.addEventListener(`blur`, () => FeedBackCoupon.classList.remove(`show`));
 
 coupon.addEventListener(`keydown`, () => {
+  // verificare se l'input contiene un valido coupon
+  if (
+    coupon.value.includes('a123456789') ||
+    coupon.value.includes('b123456789') ||
+    coupon.value.includes('c123456789') ||
+    coupon.value.includes('d123456789')
+  ) {
+    invioPressErrElem.innerText = `CODICE CORRETTO: ti è stato applicato il 20% di sconto`;
+    sconto = priceNumber * 0.8;
+    scontoFixed = sconto.toFixed(2);
+    price.innerHTML = priceNumberFixed;
+  }
   var num = parseInt(document.getElementById(`FeedBackCouponNumber`).innerText);
   console.log(num);
   if (num < 1) {
