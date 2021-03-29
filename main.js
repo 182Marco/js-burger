@@ -152,19 +152,19 @@ function ketchupFunc() {
   }
 }
 // testi ingredienti reattivi con prezzo
-cheeseTxt.addEventListener(`click`, () => cheeseFunc());
-tomatoTxt.addEventListener(`click`, () => tomatoFunc());
-eggTxt.addEventListener(`click`, () => eggFunc());
-lettuceTxt.addEventListener(`click`, () => lettuceFunc());
-mustardTxt.addEventListener(`click`, () => mustardFunc());
-ketchupTxt.addEventListener(`click`, () => ketchupFunc());
+cheeseTxt.addEventListener(`click`, cheeseFunc);
+tomatoTxt.addEventListener(`click`, tomatoFunc);
+eggTxt.addEventListener(`click`, eggFunc);
+lettuceTxt.addEventListener(`click`, lettuceFunc);
+mustardTxt.addEventListener(`click`, mustardFunc);
+ketchupTxt.addEventListener(`click`, ketchupFunc);
 // checkup e testo add ingredienti reattivi con prezzo
-cheeseBox.addEventListener(`click`, () => cheeseFunc());
-tomatoBox.addEventListener(`click`, () => tomatoFunc());
-eggBox.addEventListener(`click`, () => eggFunc());
-lettuceBox.addEventListener(`click`, () => lettuceFunc());
-mustardBox.addEventListener(`click`, () => mustardFunc());
-ketchupBox.addEventListener(`click`, () => ketchupFunc());
+cheeseBox.addEventListener(`click`, cheeseFunc);
+tomatoBox.addEventListener(`click`, tomatoFunc);
+eggBox.addEventListener(`click`, eggFunc);
+lettuceBox.addEventListener(`click`, lettuceFunc);
+mustardBox.addEventListener(`click`, mustardFunc);
+ketchupBox.addEventListener(`click`, ketchupFunc);
 // **********
 
 // BTN RESET PANINO A 0
